@@ -18,4 +18,7 @@ export class HttpService {
   getUserDetails() {
     return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
   }
+  saveUserDetails(userDetails: any) {
+    return this.http.post('https://jsonplaceholder.typicode.com/users', userDetails);
+}
 }

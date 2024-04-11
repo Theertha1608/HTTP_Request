@@ -1,7 +1,8 @@
-<h1>HTTP REQUESTS</h1>
-<div class="button-container">
-  <button (click)="getAllUserDetails()">Get All Details</button>
-  <input type="text" [(ngModel)]="searchIdentifier" placeholder="Enter identifier">
+
+<div class="get-container">
+  <div class="button-container">
+  <button (click)="getAllUserDetails()" id="get-all-button">Get All Details</button>
+  <input class="input" type="text" [(ngModel)]="searchIdentifier" placeholder="Enter identifier">
   <button (click)="getUserDetails()">Get Details</button>
 </div>
 
@@ -18,3 +19,9 @@
     <li *ngFor="let user of searchedUserDetails">{{ user.name }} - {{ user.email }}</li>
   </ul>
 </div>
+</div>
+
+<div class="button-container" id="post-button">
+  <button routerLink="/post-component" routerLinkActive="active">Check POST Request</button>
+</div>
+<router-outlet></router-outlet>

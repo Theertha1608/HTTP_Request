@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { HttpService } from './http.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PostComponent } from './post/post.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, PostComponent, RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
