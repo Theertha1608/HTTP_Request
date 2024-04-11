@@ -5,11 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpService {
+  constructor(private http: HttpClient) { }
 
-    constructor(private _http : HttpClient) { }
-  
-    getUserDetails() {
-      return this._http.get('https://jsonplaceholder.typicode.com/users')
-    }
+  getAllUsers() {
+    return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
   }
-  
+
+  getUserById(userId: number) {
+    return this.http.get<any[]>(`https://jsonplaceholder.typicode.com/users?id=${userId}`);
+  }
+
+  getUserDetails() {
+    return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
+  }
+}

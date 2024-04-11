@@ -1,12 +1,20 @@
 <h1>HTTP REQUESTS</h1>
-<div>
-  <h1>User Details</h1>
-  <button (click)="getUserDetails()">Get User Details</button>
-  <div *ngIf="userDetails">
-    <ul>
-      <li *ngFor="let user of userDetails">
-        {{ user.name }} - {{ user.email }}
-      </li>
-    </ul>
-  </div>
+<div class="button-container">
+  <button (click)="getAllUserDetails()">Get All Details</button>
+  <input type="text" [(ngModel)]="searchIdentifier" placeholder="Enter identifier">
+  <button (click)="getUserDetails()">Get Details</button>
+</div>
+
+<div id="detailsContainer">
+  <p>Details Here</p>
+
+  <h2 *ngIf="allUserDetails.length">All User Details</h2>
+  <ul>
+    <li *ngFor="let user of allUserDetails">{{ user.name }} - {{ user.email }}</li>
+  </ul>
+
+  <h2 *ngIf="searchedUserDetails.length">Searched User Details</h2>
+  <ul>
+    <li *ngFor="let user of searchedUserDetails">{{ user.name }} - {{ user.email }}</li>
+  </ul>
 </div>

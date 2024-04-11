@@ -12,13 +12,27 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  userDetails: any;
+
+  allUserDetails: any[] = [];
+  searchedUserDetails: any[] = [];
+  searchIdentifier: string = '';
 
   constructor(private httpService: HttpService) { }
 
-  getUserDetails() {
-    this.httpService.getUserDetails().subscribe((data: any) => {
-      this.userDetails = data;
+  getAllUserDetails() {
+    this.httpService.getAllUsers().subscribe((data: any[]) => {
+      this.allUserDetails = data;
     });
+  }
+
+  getUserDetails() {
+    const userId = parseInt(this.searchIdentifier, 10);
+    if (!isNaN(userId)) {
+      this.httpService.getUserById(userId).subscribe((data: any[]) => {
+        this.searchedUserDetails = data;
+      });
+    } else {
+      console.log('Invalid identifier');
+    }
   }
 }
