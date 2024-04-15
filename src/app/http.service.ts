@@ -21,4 +21,11 @@ export class HttpService {
   saveUserDetails(userDetails: any) {
     return this.http.post('https://jsonplaceholder.typicode.com/users', userDetails);
 }
+updateUser(userId: number, updatedDetails: any) {
+  return this.http.put(`https://jsonplaceholder.typicode.com/users/${userId}`, updatedDetails);
+}
+
+deleteUser(userId: number) {
+  return this.http.delete(`https://jsonplaceholder.typicode.com/users/${userId}`);
+}
 }

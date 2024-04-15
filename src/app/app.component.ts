@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostComponent } from './post/post.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -35,5 +36,22 @@ export class AppComponent {
     } else {
       console.log('Invalid identifier');
     }
+  }
+  
+
+  updateUser(userId: number, updatedDetails: any) {
+    this.httpService.updateUser(userId, updatedDetails).subscribe(response => {
+      console.log('User updated successfully:', response);
+    }, error => {
+      console.error('Error updating user:', error);
+    });
+  }
+
+  deleteUser(userId: number) {
+    this.httpService.deleteUser(userId).subscribe(() => {
+      console.log('User deleted successfully');
+    }, error => {
+      console.error('Error deleting user:', error);
+    });
   }
 }
